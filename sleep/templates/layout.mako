@@ -13,7 +13,7 @@
 <div id="page">
 	<p><div id="title"><a href="${request.route_url('home')}">sle_p</a>, by <a href="http://dcc.nitrated.net/">dcchut</a></div>
 	% if request.user:
-		welcome, ${request.user.username}.  <a href="${request.route_url('stats')}">stats</a> - <a href="${request.route_url('logout')}">logout</a>.
+		${request.user.username}.  <a href="${request.route_url('stats')}">global stats</a> - <a href="${request.route_url('pstats')}">personal stats</a> - <a href="${request.route_url('logout')}">logout</a>.
 	% else:
 		 <a href="${request.route_url('login')}">login</a> or <a href="${request.route_url('register')}">register</a>.
 	% endif

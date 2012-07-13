@@ -1,6 +1,6 @@
 <%inherit file="layout.mako"/>
 
-<p class="title">stats</p>
+<p class="title">${title}</p>
 
 <p>average sleep duration: ${avg_sleep_duration} hours</p>
 <p>histogram of sleep times:<br />
