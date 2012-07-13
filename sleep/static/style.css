@@ -1,0 +1,83 @@
+html { 
+	overflow: -moz-scrollbars-vertical;
+	overflow-x: auto; 
+}
+
+body {
+    background-color: #DEDCDC;
+	font: 12pt verdana;
+}
+
+div#page {
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 25px;
+	padding-right: 25px;
+	border: 1px solid #000000;
+	background-color: #FFFFFF;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+
+div#flash {
+	width: 500px;
+	border: 1px solid #000000;
+	background-color: #E0E0E0;
+	padding: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+hr {
+    margin-bottom: 15px;
+}
+
+div.fleft, div.fright {
+    width: 250px;
+    float: left;
+}
+
+div.frow {
+    width: 600px;
+    height: 35px;
+}
+
+div.grow {
+    height:35px;
+}
+
+div.gc0, div.gc1, div.gc2, div.gc3 {
+    width: 150px;
+    float: left;
+}
+
+div.title {
+    font-size: x-large;
+    height: 40px;
+}
+
+p.title {
+	font-weight: bold;
+}
+
+/* make links <AWESOME> */
+a:link {
+	text-decoration: underline;
+	color: black;
+}
+
+a:visited {
+	text-decoration: underline;
+	color: black;
+}
+
+a:active {
+	text-decoration: underline;
+	color: black;
+}
+
+a:hover {
+	text-decoration: underline; 
+	color: red;
+}

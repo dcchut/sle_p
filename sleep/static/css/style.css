@@ -1,0 +1,118 @@
+html { 
+	overflow: -moz-scrollbars-vertical;
+	overflow-x: auto; 
+}
+
+body {
+    background-color: #DEDCDC;
+	font: 12pt verdana;
+}
+
+div#page {
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 25px;
+	padding-right: 25px;
+	border: 1px solid #000000;
+	background-color: #FFFFFF;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+
+div#flash {
+	width: 500px;
+	border: 1px solid #000000;
+	background-color: #E0E0E0;
+	padding: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+div#title {
+    font-size: x-large;
+    height: 40px;
+}
+
+hr {
+    margin-bottom: 15px;
+}
+
+div.fleft, div.fright {
+    width: 250px;
+    float: left;
+}
+
+div.frow {
+    width: 600px;
+    height: 35px;
+}
+
+p.title {
+	font-weight: bold;
+}
+
+
+/* alternate row shading */
+div.alt {
+	background-color: #ecf6fc;
+}
+
+/* row mouseover trick */
+div.over {
+	background-color: #bcd4ec;
+}
+
+/* standard row */
+div.grow {
+    height:35px;
+    width: 700px;
+	border: 1px solid #000000;
+	border-top: 0px;
+}
+
+/* we put the top border in here to make sure we actually get one */
+div.ghead {
+	border-top: 1px solid #000000;
+}
+
+/* columns of our css table */
+div.gc0, div.gc1, div.gc2, div.gc3 {
+    float: left;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+div.gc0 {
+	width: 150px;
+	margin-left: 5px;
+}
+
+div.gc1 {
+	width: 125px;
+}
+
+div.gc2 {
+	width: 75px;
+}
+
+/* make links <AWESOME> */
+a:link {
+	text-decoration: underline;
+	color: black;
+}
+
+a:visited {
+	text-decoration: underline;
+	color: black;
+}
+
+a:active {
+	text-decoration: underline;
+	color: black;
+}
+
+a:hover {
+	text-decoration: underline; 
+	color: red;
+}
