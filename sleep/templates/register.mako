@@ -19,6 +19,14 @@
     <div class="fleft">email:</div>
     <div class="fright"><input type="text" name="email" value="${email}"></div>
 </div>
+<p style="width:500px;">
+by registering for sle_p you agree that sle_p can use your submitted
+data for statistical purposes. sle_p will always present user submitted
+data in an anonymous manner</p>
+<!-- 
+god I have no idea about writing disclaimers,
+but the spirit is there
+-->
 <div class="frow">
     <div class="fleft">&nbsp;</div>
     <div class="fright"><input type="submit" value="register"></div>
