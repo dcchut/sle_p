@@ -69,7 +69,7 @@ def home_view(request):
                            'start': dateutil.format_db_time_o(r.start),
                            'end': dateutil.format_db_time_o(r.end),
                            'quality': r.quality,
-                           'duration' : round(r.duration() / float(60*60),2)})
+                           'duration' : '%.2f' % round(r.duration() / float(60*60),2)})
         
         return {'records' : output}
     else:
