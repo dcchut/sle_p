@@ -10,6 +10,10 @@ def sleep_time_stats(rs):
     avg_sleep_duration = sum(durations)/len(durations)
     avg_sleep_duration = round(avg_sleep_duration/float(60*60),2)
     
+    # average sleep quality
+    qualities = [x.quality for x in rs]
+    avg_sleep_quality = round(sum(qualities)/float(len(qualities)),2)
+
     # start sleep times
     start = [int(x.start.split(',')[0]) for x in rs]
     
@@ -44,4 +48,4 @@ def sleep_time_stats(rs):
         tts += '[' + str(i) + ',' + str(shc[i]) + '],'
     tts = tts[:-1] + ']'
     
-    return (avg_sleep_duration, ojs, start_stats, tts, end_stats)
+    return (avg_sleep_duration, ojs, start_stats, tts, end_stats, avg_sleep_quality)

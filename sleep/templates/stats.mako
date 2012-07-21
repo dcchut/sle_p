@@ -3,6 +3,7 @@
 <p class="title">${title}</p>
 
 <p>average sleep duration: ${avg_sleep_duration} hours</p>
+<p>average sleep quality: ${avg_sleep_quality}</p>
 <p>histogram of sleep times:<br />
 <div id="s1" style="width:600px;height:300px;"></div><br />
 </p>
