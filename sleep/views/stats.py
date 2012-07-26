@@ -7,7 +7,7 @@ from sleep.models.stats import sleep_time_stats
 from sleep.models.user import User
 
 def ulhash(user):
-    return phash(user.password[-10:] + 'i love to eat crocodiles')[:10]
+    return phash(user.password[-10:] + 'i love to eat crocodiles' + user.username + 'hello there' + user.id)[:10]
 
 @view_config(route_name='stats', renderer='stats.mako')
 def stats_view(request):
