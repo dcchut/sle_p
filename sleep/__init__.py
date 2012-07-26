@@ -42,6 +42,7 @@ def main(global_config, **settings):
     config.add_route('delete', '/delete/{id}')
     config.add_route('stats', '/stats')
     config.add_route('pstats', '/pstats')
+    config.add_route('vstats','/view/{username}/{hash}')
     
     session_factory = session_factory_from_settings(settings)
     config.set_session_factory(session_factory)

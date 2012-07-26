@@ -1,6 +1,10 @@
 <%inherit file="layout.mako"/>
 
-<p class="title">${title}</p>
+<p class="title">${title} 
+% if user_hash:
+ - <a href="${request.route_url('vstats',username=request.user.username,hash=user_hash)}">link</a>
+% endif
+</p>
 
 <p>average sleep duration: ${avg_sleep_duration} hours</p>
 <p>average sleep quality: ${avg_sleep_quality}</p>
