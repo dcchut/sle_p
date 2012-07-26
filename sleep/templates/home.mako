@@ -13,8 +13,64 @@
 			// change colour on hover
 			$(".shade").mouseover(function(){$(this).addClass("over");}).mouseout(function(){$(this).removeClass("over");});
 			
+			$(".showmorehide").hide();
+			
+			$("#showmore").click(function(ev){
+				ev.preventDefault();
+				$(".showmorerow").hide();				
+				$(".showmorehide").show();
+			});
+			
+			$("#hidemore").click(function(ev){
+				ev.preventDefault();
+				$(".showmorerow").show();
+				$(".showmorehide").hide();
+			});	
 		});
 	</script>
+    <p class="title">your sleep records:</p>
+	<p>
+	% if records_t:
+		<div class="grow ghead">
+		    <div class="gc gc0">date:</div>
+		    <div class="gc gc1">start time:</div>
+		    <div class="gc gc1">end time:</div>
+		    <div class="gc gc2">quality:</div>
+		    <div class="gc gc1">duration:</div>
+		    <div class="gc gc2">actions:</div>
+		</div>
+		% for r in records_t:
+			<div class="grow shade">
+				<div class="gc gc0">${r['date']}</div>
+				<div class="gc gc1">${r['start']}</div>
+				<div class="gc gc1">${r['end']}</div>
+				<div class="gc gc2">${r['quality']}</div>
+				<div class="gc gc1">${r['duration']} hours</div>
+				<div class="gc gc2"><a href="${request.route_url('delete',id=r['id'])}">delete</a></div>
+			</div>
+		% endfor
+		% if records_h:
+			<div class="grow shade showmorerow">
+				<div class="gc gc0"><a id="showmore" href="">show more</a></div>		
+			</div>
+			% for r in records_h:
+				<div class="grow shade showmorehide">
+					<div class="gc gc0">${r['date']}</div>
+					<div class="gc gc1">${r['start']}</div>
+					<div class="gc gc1">${r['end']}</div>
+					<div class="gc gc2">${r['quality']}</div>
+					<div class="gc gc1">${r['duration']} hours</div>
+					<div class="gc gc2"><a href="${request.route_url('delete',id=r['id'])}">delete</a></div>
+				</div>
+			% endfor
+			<div class="grow shade showmorehide">
+				<div class="gc gc0"><a id="hidemore" href="">hide more</a></div>		
+			</div>
+		% endif
+	% else:
+		none
+	% endif	
+	</p>
 	<p class="title">insert a new sleep record:</p>
 	<p>
 	note: if you went to sleep at 11:35pm on 10/06/2012, then write 10/06/2012 under start date.<br />
@@ -71,31 +127,6 @@
 		    <div class="fleft">&nbsp;</div>
 		    <div class="fright"><input type="submit" value="insert"></div>
 		</div>
-	</p>
-    <p class="title">your sleep records:</p>
-	<p>
-	% if records:
-		<div class="grow ghead">
-		    <div class="gc gc0">date:</div>
-		    <div class="gc gc1">start time:</div>
-		    <div class="gc gc1">end time:</div>
-		    <div class="gc gc2">quality:</div>
-		    <div class="gc gc1">duration:</div>
-		    <div class="gc gc2">actions:</div>
-		</div>
-		% for r in records:
-			<div class="grow shade">
-				<div class="gc gc0">${r['date']}</div>
-				<div class="gc gc1">${r['start']}</div>
-				<div class="gc gc1">${r['end']}</div>
-				<div class="gc gc2">${r['quality']}</div>
-				<div class="gc gc1">${r['duration']} hours</div>
-				<div class="gc gc2"><a href="${request.route_url('delete',id=r['id'])}">delete</a></div>
-			</div>
-		% endfor
-	% else:
-		none
-	% endif	
 	</p>
 % else:
 	<p>This is <b>sle_p</b>, another useless website with negligible social benefit. Hopefully we'll get some nice statistics out of this, and maybe even some nice

@@ -71,6 +71,7 @@ def home_view(request):
                            'quality': r.quality,
                            'duration' : '%.2f' % round(r.duration() / float(60*60),2)})
         
-        return {'records' : output}
+        return {'records_t' : output[:7],
+                'records_h' : output[7:]}
     else:
         return {}
