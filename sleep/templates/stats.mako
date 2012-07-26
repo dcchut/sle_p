@@ -13,6 +13,9 @@
 <p>average sleep duration by day of week:<br />
 <div id="sd_byday" style="width:600px;height:300px;"></div><br />
 </p>
+<p>average sleep quality by day of week:<br />
+<div id="sq_byday" style="width:600px;height:300px;"></div><br />
+</p>
 <script type="text/javascript">
 $(function(){
     var d1 = [];
@@ -20,6 +23,7 @@ $(function(){
     var d2 = [];
     var d2m = ${s2_stats[2]}/jstat.dnorm(${s2_stats[0]},${s2_stats[0]},${s2_stats[1]});
     var d3 = ${sd_byday};
+    var d4 = ${sq_byday};
     
     for (var i = 0; i < 24; i+= 0.25) {
       	d1.push([i,d1m*jstat.dnorm(i,${s1_stats[0]},${s1_stats[1]})]);
@@ -28,6 +32,7 @@ $(function(){
     
     for (var i = 0; i < 7; i+= 1) {
     	d3[i] = [i,d3[i]];
+    	d4[i] = [i,d4[i]];
     } 
     
     var xt1 = [];
@@ -64,6 +69,17 @@ $(function(){
     $.plot($("#sd_byday"),[
     	{
     		data: d3,
+    		bars: {	show: true, barWidth: 0.5, align: "center" },
+		}
+	], {
+		xaxis: { 
+					min: -0.5,
+					ticks: [[0, "Mon"], [1, "Tue"], [2, "Wed"], [3, "Thu"], [4, "Fri"], [5, "Sat"], [6, "Sun"]],
+					max: 6.5, } 
+	});
+    $.plot($("#sq_byday"),[
+    	{
+    		data: d4,
     		bars: {	show: true, barWidth: 0.5, align: "center" },
 		}
 	], {

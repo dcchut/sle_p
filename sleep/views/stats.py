@@ -9,7 +9,7 @@ def stats_view(request):
     # get ALL the records
     rs = request.DBSession.query(Sleep).all()
     
-    (avg_sleep_duration, ojs, start_stats, tts, end_stats, avg_sleep_quality, sleep_duration_byday) = sleep_time_stats(rs)
+    (avg_sleep_duration, ojs, start_stats, tts, end_stats, avg_sleep_quality, sleep_duration_byday, sleep_quality_byday) = sleep_time_stats(rs)
     
     return {'title' : 'global stats',
             'avg_sleep_duration' : avg_sleep_duration,
@@ -18,7 +18,8 @@ def stats_view(request):
             's1_stats' : start_stats,
             's2_data' : tts,
             's2_stats' : end_stats,
-            'sd_byday' : sleep_duration_byday}
+            'sd_byday' : sleep_duration_byday,
+            'sq_byday' : sleep_quality_byday}
             
 @view_config(route_name='pstats', renderer='stats.mako')
 def pstats_view(request):
@@ -29,7 +30,7 @@ def pstats_view(request):
     # get our users records
     rs = request.user.records
     
-    (avg_sleep_duration, ojs, start_stats, tts, end_stats, avg_sleep_quality, sleep_duration_byday) = sleep_time_stats(rs)
+    (avg_sleep_duration, ojs, start_stats, tts, end_stats, avg_sleep_quality, sleep_duration_byday, sleep_quality_byday) = sleep_time_stats(rs)
     
     return {'title' : 'personal stats',
             'avg_sleep_duration' : avg_sleep_duration,
@@ -38,5 +39,6 @@ def pstats_view(request):
             's1_stats' : start_stats,
             's2_data' : tts,
             's2_stats' : end_stats,
-            'sd_byday' : sleep_duration_byday}
+            'sd_byday' : sleep_duration_byday,
+            'sq_byday' : sleep_quality_byday}
             
