@@ -10,17 +10,25 @@
 <p>histogram of wakeup times:<br />
 <div id="s2" style="width:600px;height:300px;"></div><br />
 </p>
+<p>average sleep duration by day of week:<br />
+<div id="sd_byday" style="width:600px;height:300px;"></div><br />
+</p>
 <script type="text/javascript">
 $(function(){
     var d1 = [];
     var d1m = ${s1_stats[2]}/jstat.dnorm(${s1_stats[0]},${s1_stats[0]},${s1_stats[1]});
     var d2 = [];
     var d2m = ${s2_stats[2]}/jstat.dnorm(${s2_stats[0]},${s2_stats[0]},${s2_stats[1]});
+    var d3 = ${sd_byday};
     
     for (var i = 0; i < 24; i+= 0.25) {
-      d1.push([i,d1m*jstat.dnorm(i,${s1_stats[0]},${s1_stats[1]})]);
-      d2.push([i,d2m*jstat.dnorm(i,${s2_stats[0]},${s2_stats[1]})]);
+      	d1.push([i,d1m*jstat.dnorm(i,${s1_stats[0]},${s1_stats[1]})]);
+      	d2.push([i,d2m*jstat.dnorm(i,${s2_stats[0]},${s2_stats[1]})]);
     }
+    
+    for (var i = 0; i < 7; i+= 1) {
+    	d3[i] = [i,d3[i]];
+    } 
     
     var xt1 = [];
     i = 0;
@@ -52,7 +60,17 @@ $(function(){
         }
     ], {
         xaxis: { ticks: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23] }
-        
     });
+    $.plot($("#sd_byday"),[
+    	{
+    		data: d3,
+    		bars: {	show: true, barWidth: 0.5, align: "center" },
+		}
+	], {
+		xaxis: { 
+					min: -0.5,
+					ticks: [[0, "Mon"], [1, "Tue"], [2, "Wed"], [3, "Thu"], [4, "Fri"], [5, "Sat"], [6, "Sun"]],
+					max: 6.5, } 
+	});
 });
 </script>

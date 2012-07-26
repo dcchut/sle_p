@@ -22,6 +22,12 @@ class Sleep(Base):
     user = relationship("User", 
                         primaryjoin="Sleep.user_id == User.id")
     
+    def ddate(self):
+        ds = map(int,self.date.split('/'))
+        
+        # return a date object corresponding to this date
+        return datetime.date(ds[2],ds[1],ds[0])
+
     def duration(self):
         tdelta = datetime.datetime.strptime(self.end,'%H,%M')-datetime.datetime.strptime(self.start,'%H,%M')
         

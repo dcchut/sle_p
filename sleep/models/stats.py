@@ -48,4 +48,10 @@ def sleep_time_stats(rs):
         tts += '[' + str(i) + ',' + str(shc[i]) + '],'
     tts = tts[:-1] + ']'
     
-    return (avg_sleep_duration, ojs, start_stats, tts, end_stats, avg_sleep_quality)
+    # sleep duration by day of week
+    sd_step1 = [(x.ddate().weekday(),x.duration()) for x in rs]
+    sd_step2 = [[x[1] for x in sd_step1 if x[0] == y] for y in range(0,7)]
+    sd_step3 = [round((sum(x)/len(x))/float(60*60),2) for x in sd_step2]
+    
+    
+    return (avg_sleep_duration, ojs, start_stats, tts, end_stats, avg_sleep_quality, sd_step3)
