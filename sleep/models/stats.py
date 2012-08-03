@@ -51,12 +51,25 @@ def sleep_time_stats(rs):
     # sleep duration by day of week
     sd_step1 = [(x.ddate().weekday(),x.duration()) for x in rs]
     sd_step2 = [[x[1] for x in sd_step1 if x[0] == y] for y in range(0,7)]
-    sd_step3 = [round((sum(x)/len(x))/float(60*60),2) for x in sd_step2]
+    
+    # stupid divide by zeros
+    sd_step3 = []
+    for x in sd_step2:
+        if len(x) == 0:
+            sd_step3.append(0)
+        else:
+            sd_step3.append(round((sum(x)/len(x))/float(60*60),2))
     
     # sleep quality by day of week
     sq_step1 = [(x.ddate().weekday(),x.quality) for x in rs]
     sq_step2 = [[x[1] for x in sq_step1 if x[0] == y] for y in range(0,7)]
-    sq_step3 = [round(sum(x)/float(len(x)),2) for x in sq_step2]
     
+    # more stupid divide by zeros
+    sq_step3 = []
+    for x in sq_step2:
+        if len(x) == 0:
+            sq_step3.append(0)
+        else:
+            sq_step3.append(round(sum(x)/float(len(x)),2))
     
     return (avg_sleep_duration, ojs, start_stats, tts, end_stats, avg_sleep_quality, sd_step3, sq_step3)
